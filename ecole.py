@@ -15,8 +15,12 @@ class Membre:
     
 class Professeur(Membre): 
 
-    def __init__(self,nom,prenom,git initskill,biographie):
-        self.skill = skill 
+    def __init__(self, nom, prenom, skill, biographie):
+        Membre.__init__(self, nom, prenom)
+        if isinstance(skill, list):
+            self.skill = skill
+        else:
+            self.skill = []
         self.biographie=biographie   
 
 class Etudiant(Membre): 
@@ -32,11 +36,8 @@ class Etudiant(Membre):
 mbre1=Membre("Dupont","Jean")
 
 mbre1.presentation()
-prof=Professeur("c++",)
-        
-        
-        
-    
+prof=Professeur("Toto", "Tata", 2, 'Je suis professeur')
+print(prof.skill)
    
 
     
