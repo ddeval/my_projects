@@ -1,0 +1,46 @@
+from cgitb import text
+import os
+
+
+
+
+def show_menu():
+    while True : 
+        print("""Faites votre choix :
+        1 - Voir le secret, 
+        2 - Modifier le secret,
+        3 - Quitter le programme""")
+        choix = input("Votre choix (1|2|3) : ")
+
+        if choix in "123" and len(choix) == 1:
+            return choix
+        else:
+            print("Erreur, réessayez !\n\n")
+
+
+
+    
+
+def main():
+    file_path = "./fichier1.txt"
+    while True :
+        choix = show_menu()
+
+        match choix:
+            case "1":
+                if os.path.exists(file_path):
+                    file = open(file_path, "r", encoding="UTF-8") 
+                else:
+                    print("Le fichier n'est pas encore créé; création du fichier")
+                    file = open(file_path, 'w', encoding="UTF-8")
+            case "2":
+                texte_secret=input("Veuillez saisir un texte secret\n")
+                file = open(file_path, 'a', encoding="UTF-8")
+                file.writelines(texte_secret)
+            case "3": 
+                file.close()
+                exit()
+                
+        
+if __name__ == "__main__":
+    main()
